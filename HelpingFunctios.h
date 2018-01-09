@@ -1,4 +1,4 @@
-//Разделяет строку по разделителю.
+//divide string by a separator
 vector <string> Split(string arg, char separator)
 {
 	vector <string> v;
@@ -18,7 +18,7 @@ vector <string> Split(string arg, char separator)
 	}
 	return v;
 }
-//Объединяет элементы вектора в строку
+//join elements of vector in string
 string Merge(vector <string> way, char separator)
 {
 	string key;
@@ -42,7 +42,7 @@ string Merge(vector <string> way, char separator)
 	}
 	return key;
 }
-//Инвертирует вектор
+//invert vector
 vector <string> Reverse(vector <string> arg)
 {
 	if (arg.size() % 2 == 0)
@@ -65,7 +65,7 @@ vector <string> Reverse(vector <string> arg)
 	}
 	return arg;
 }
-//Проверка аргументов (первая - на пробелы)
+//checking arguments
 bool FirstCheckingArguments(string argument)
 {
 	if (argument.empty() == true)
@@ -86,7 +86,7 @@ bool FirstCheckingArguments(string argument)
 		return false;
 	return true;
 }
-//Проверка ключа и данных отдельно
+//checking key and data
 bool SecondCheckingArguments(string command, string way, string data)
 {
 	if (command == "print" && way == "alltree")

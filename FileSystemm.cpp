@@ -4,21 +4,21 @@
 #include "stdafx.h"
 #include "FSTree.h"
 #include "HelpingFunctios.h"
-//Сортировка папки
+//Sorting folder
 void SortFolder(vector <Node*> & children)
 {
 	if (children.empty() == true)
 		return;
 	stable_sort(begin(children), end(children), Compare());
 }
-//Поиск элемента по ключу
+//Searching element according to key
 Node* SearchNode(string key, Node* element)
 {
 	if (element == NULL)
 		return NULL;
 	if (element != NULL)
 	{
-		//Если ищем только корень
+		//If we seeking only root
 		if (key.find("/") == -1 && key.find(":") != -1)
 		{
 			if (element -> key == key)
@@ -26,7 +26,7 @@ Node* SearchNode(string key, Node* element)
 			else
 				return NULL;
 		}
-		//Если ищем какой то ключ
+		//if seeking some key
 		if (key.find("/") == -1 && key.find(":") == -1)
 			return element;
 		//В пути как минимум 2 ключа, а у текущего потомков нет
@@ -75,13 +75,13 @@ Node* SearchNode(string key, Node* element)
 	}
 	return NULL;
 }
-//Удаление всего дерева (или поддерева)
+//removing whole tree (or subtree)
 Node* DeleteAllTree(Node* root)
 {
 	Node* element = NULL;
 	while (true)
 	{
-		//Потомки есть
+		//children are
 		if (root -> children.empty() == false)
 		{
 			root = root -> children[root -> children.size() - 1];
@@ -90,7 +90,7 @@ Node* DeleteAllTree(Node* root)
 		//Дошли до корня
 		if (root -> parent == NULL)
 			break;
-		//Потомков нет
+		//no children
 		if (root -> children.empty() == true)
 		{
 			element = root;
@@ -104,7 +104,7 @@ Node* DeleteAllTree(Node* root)
 	root = NULL;
 	return root;
 }
-//Удаление элемента (элементов) по ключу
+//removing node (or nodes) according to key
 void DeleteNode(string key, Node* root)
 {
 	if (root == NULL)
@@ -206,7 +206,7 @@ void DeleteNode(string key, Node* root)
 		}
 	}
 }
-//Добавление элемента по ключу
+//adding node according to key
 Node* AddNode(string key1, string data1, Node* root, Node* element) 
 {
 	//Условие выхода из рекурсии и добавления узла
@@ -336,7 +336,7 @@ Node* AddNode(string key1, string data1, Node* root, Node* element)
 	}
 	return NULL;
 }
-//Печать элемента (конкретного)
+//print some node
 void Print(string key, Node* element, char* output)
 {
 	ofstream out_put(output, ios :: app);
@@ -385,7 +385,7 @@ void Print(string key, Node* element, char* output)
 
 	}
 }
-//Печать всего дерева
+//print a whole tree
 void PrintAllTree(Node* element, char* output)
 {
 	ofstream out_put(output, ios :: app);
@@ -434,7 +434,7 @@ void PrintAllTree(Node* element, char* output)
 	}
 
 }
-//Печать результатов функций добавления и поиска
+//print results of functions of adding and searching
 void PrintEl(Node* element, char* out_put, string arg)
 {
 	ofstream output(out_put, ios :: app);
@@ -480,7 +480,7 @@ void PrintEl(Node* element, char* out_put, string arg)
 		}
 	}
 }
-//Точка входа
+//entry point
 int main(int argc, char* argv[])
 {
 	setlocale(LC_ALL, "Russian");
